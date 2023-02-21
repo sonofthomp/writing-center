@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% include "editor/navbar.html" %}
+{% block content %}
+
+<div class="column is-6 is-offset-3">
+	<br><br>
+    <h3 class="title">Feedback</h3>
+    <div class="box">
+        <center>
+            <h3 class="title is-4">
+                {{ editor }}'s description of edit:
+            </h3>
+        </center>
+        <br>
+
+        <p><b>Editor: <i>{{ editor }}</i></b></p>
+
+        <label class="label">Tags: </label>
+
+        <div id="tags">
+            {% for tag in tags %}
+            <span class="tag is-light is-medium" style="margin-bottom: 5px;">
+                <p>{{ tag }}</p>
+            </span>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <p><b>Time spent working on assignment: <u>{{ hours }}</u> hrs </b></p>
+
+        <br>
+
+        <p><b>Details of edit:</b></p>
+        <div class="control">
+            <textarea class="textarea" readonly>{{ helped }}</textarea>
+        </div>
+        <br>
+        <label class="checkbox">
+            <input type="checkbox" value="1">
+            Is this correct?
+        </label>
+    </div>
+    <div class="box">
+        <form action="/finish" method="post">
+            <input type="hidden" name="id" value="{{ request.args['id'] }}"></input>
+            <h3 class="title is-5">Answer the following questions, on a scale of 1-10.</h3>
+            <h3 class="title is-5">How communicative was {{ editor }}?</h3>
+            <center><input type="range" name="quality" min='1' max='10' step='1' value='5' style="width: 91%; margin-left: 2%"></input></center>
+            <table>
+                <tr>
+                    <td style="width: 11.11111%"><center>1</center></td>
+                    <td style="width: 11.11111%"><center>2</center></td>
+                    <td style="width: 11.11111%"><center>3</center></td>
+                    <td style="width: 11.11111%"><center>4</center></td>
+                    <td style="width: 11.11111%"><center>5</center></td>
+                    <td style="width: 11.11111%"><center>6</center></td>
+                    <td style="width: 11.11111%"><center>7</center></td>
+                    <td style="width: 11.11111%"><center>8</center></td>
+                    <td style="width: 11.11111%"><center>9</center></td>
+                    <td style="width: 11.11111%"><center>10</center></td>
+                </tr>
+                <tr>
+                    <td>Very uncommu-
+                        <br>nicative</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td>Very commu-
+                        <br>nicative</td>
+                </tr>
+            </table>
+            <br><br>
+
+            <h3 class="title is-5">How valuable were {{ editor }}'s edits?</h3>
+            <center><input type="range" name="edits" min='1' max='10' step='1' value='5' style="width: 91%; margin-left: 2%"></input></center>
+            <table>
+                <tr>
+                    <td style="width: 11.11111%"><center>1</center></td>
+                    <td style="width: 11.11111%"><center>2</center></td>
+                    <td style="width: 11.11111%"><center>3</center></td>
+                    <td style="width: 11.11111%"><center>4</center></td>
+                    <td style="width: 11.11111%"><center>5</center></td>
+                    <td style="width: 11.11111%"><center>6</center></td>
+                    <td style="width: 11.11111%"><center>7</center></td>
+                    <td style="width: 11.11111%"><center>8</center></td>
+                    <td style="width: 11.11111%"><center>9</center></td>
+                    <td style="width: 11.11111%"><center>10</center></td>
+                </tr>
+                <tr>
+                    <td>Not valuable</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td>Valuable</td>
+                </tr>
+            </table>
+            <br><br>
+
+            <h3 class="title is-5">Overall, would you recommend working with {{ editor }}?</h3>
+            <center><input type="range" name="overall" min='1' max='10' step='1' value='5' style="width: 91%; margin-left: 2%"></input></center>
+            <table>
+                <tr>
+                    <td style="width: 11.11111%"><center>1</center></td>
+                    <td style="width: 11.11111%"><center>2</center></td>
+                    <td style="width: 11.11111%"><center>3</center></td>
+                    <td style="width: 11.11111%"><center>4</center></td>
+                    <td style="width: 11.11111%"><center>5</center></td>
+                    <td style="width: 11.11111%"><center>6</center></td>
+                    <td style="width: 11.11111%"><center>7</center></td>
+                    <td style="width: 11.11111%"><center>8</center></td>
+                    <td style="width: 11.11111%"><center>9</center></td>
+                    <td style="width: 11.11111%"><center>10</center></td>
+                </tr>
+                <tr>
+                    <td>No</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td>Yes</td>
+                </tr>
+            </table>
+            <br>
+
+            <h3 class="title is-5">Any other thoughts on {{ editor }}?</h3>
+            <div class="control">
+                <textarea class="textarea" placeholder="Write your thoughts here..." name="comments"></textarea>
+            </div>
+            <br><br>
+
+            <button class="button is-block is-info is-large is-fullwidth">Complete Edit</button>
+        </form>
+    </div>
+    <a href="/">
+	    <button class="button is-light" style="background-color: rgb(226, 225, 224);">← Back</button>
+	</a>
+</div>
+
+{% endblock %}

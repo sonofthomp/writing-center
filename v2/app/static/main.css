@@ -1,0 +1,9 @@
+html, body {
+	background-color: rgb(225, 252, 228);
+}
+
+#main-box {
+	background-color: lightgrey;
+	padding: 20px;
+	border-radius: 20px;
+}

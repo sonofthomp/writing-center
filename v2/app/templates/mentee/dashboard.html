@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% include "mentee/navbar.html" %}
+{% block content %}
+<center>
+	<br><br>
+	<h3 class="title is-3"><i>Welcome back, {{ fname }}</i></h3>
+	<p><i>You have <u>{{ num_active }}</u> ongoing requests</i></p>
+	<hr>
+	<h1 class="title is-3">Current requests:</h1>
+
+	<table class="table is-striped is-bordered" style="width: 100vw;">
+		<tr>
+			<th><i><center>Request ID</center></i></th>
+			<th><i><center>Teacher</center></i></th>
+			<th><i><center>Course</center></i></th>
+			<th><i><center>Details</center></i></th>
+			<th><i><center>Assignment Sheet</center></i></th>
+			<th><i><center>Essay Draft</center></i></th>
+			<th><i><center>Due</center></i></th>
+			<th><i><center>Editor</center></i></th>
+			<th><i><center>Modify</center></i></th>
+		</tr>
+		{% for request in requests[::-1] %}
+			{% if request[13] < 2 %}
+
+			<tr>
+				<td><center>{{ request[0] }}</center></td>
+				<td>{{ request[6] }}</td>
+				<td>{{ request[7] }}, period {{ request[8] }}</td>
+				<td>{{ request[9] }}</td>
+				<td><a href="{{ request[10] }}">Link</a></td>
+				<td><a href="{{ request[11] }}">Link</a></td>
+				<td>{{ request[17] }}</td>
+
+				<td>
+					{% if request[13] %}
+					{{ request[15] }}
+					<br>
+					<a href="mailto:{{ request[14] }}@stuy.edu"><b>{{ request[14] }}</b></a>
+					{% else %}
+					<p color="red"><b>Not matched yet</b></p>
+					{% endif %}
+				</td>
+				<td>
+					{% if request[13] == 0 %}
+					<a href="/delete_entry?id={{ request[0] }}">
+						<button class="button is-danger">Delete</button>
+					</a>
+					{% endif %}
+					{% if request[13] == 1 %}
+						{% if request[19] == "" %}
+						<button class="button is-warning" style="height: 5%;">Currently being edited...</button>
+						{% else %}
+						<a href="/feedback?id={{ request[0] }}"><button class="button is-success">Complete Feedback</button></a>
+						{% endif %}
+					{% endif %}
+				</td>
+			</tr>
+			{% endif %}
+		{% endfor %}
+		{% if none_ %}
+			<td colspan="10">
+				<center>
+					<br>
+					<p><b>No current requests.</b></p>
+					<br>
+				</center>
+			</td>
+		{% endif %}
+	</table>
+	<a href="/create_piece">
+		<button class="button is-info" style="height: 5%;"><i class="fa-solid fa-plus"></i>&nbsp;Create Request</button>
+	</a>
+</center>
+<br><br>
+{% endblock %}

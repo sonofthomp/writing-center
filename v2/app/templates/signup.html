@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="column is-4 is-offset-4">
+	<br><br><br>
+    <h3 class="title">{{ usertype }} Sign Up</h3>
+    <div class="box">
+        <form method="POST" action="/{{ usertype|lower }}_signup">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="notification is-{{ category }}">
+                            <center>{{ message }}</center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input type="hidden" name="usertype" value="{{ usertype|lower }}"></input>
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input is-medium" type="text" name="email" placeholder="stuy.edu email" autofocus="" style="width: 19.7vw;">
+                </div>
+                <div class="control">
+                    <a class="button is-static is-medium">
+                        @stuy.edu
+                    </a>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-medium" type="password" name="password" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-medium" type="text" name="fname" placeholder="First Name">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-medium" type="text" name="lname" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-medium" type="number" name="grade" placeholder="Current Grade">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="select">
+                    <select name="pronouns" style="width: 50vw;">
+                        <option disabled selected value>Pronouns</option>
+                        <option value="he/him">he/him</option>
+                        <option value="she/her">she/her</option>
+                        <option value="they/them">they/them</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="button is-block is-info is-large is-fullwidth">Sign-up</button>
+            <br>
+            <a href="/{{ usertype|lower }}_login">Back to login</a>
+        </form>
+    </div>
+    <a href="/">
+	    <button class="button is-light" style="background-color: rgb(226, 225, 224);">← Back</button>
+	</a>
+</div>
+{% endblock %}

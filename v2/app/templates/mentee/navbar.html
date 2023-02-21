@@ -1,0 +1,75 @@
+<script>
+  function toggleOverlay() {
+    console.log("toggled!");
+  }
+</script>
+
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: rgb(246, 245, 255); box-shadow:0 0px 1px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19) !important;">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <h1 class="title is-4" style="padding-bottom: 3px;">
+        Writing Center
+      </h1>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <a class="navbar-item" href="/dashboard">
+        Dashboard
+      </a>
+
+      <a class="navbar-item" href="/create_piece">
+        Create Edit Request
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="/about">
+          About Us
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/about#faq">
+            FAQ
+          </a>
+          <a class="navbar-item" href="/about#leadership">
+            Leadership
+          </a>
+        </div>
+      </div>
+
+      <a class="navbar-item" href="/events">
+        Events
+      </a>
+
+    </div>
+  </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <!--<a class="button" href="/mentee_tutorial" style="background-color: rgb(247, 245, 244); border: 0px">
+            <span class="icon-text" style="font-size: 5vh;">
+              <span class="icon">
+                <i class="fas fa-question-circle"></i>
+              </span>
+            </span>
+          </a>-->
+          <a class="button is-info" href="mailto:gthompson30@stuy.edu">
+            Report Bug
+          </a>
+          <a class="button is-info" href="/logout">
+            Log out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

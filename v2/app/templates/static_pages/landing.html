@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+   <br><br><br><br>
+   <table style="height: 72.6vh">
+      <!-- i hate this css -->
+      <tr>
+         <td style="width: 60%">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="notification is-{{ category }}">
+                            <center>{{ message }}</center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+         	<div class="main-box">
+	            <h1 class="title is-1">
+	               Stuyvesant Writing Center
+	            </h1>
+	            <p>
+	               <b>The Writing Center</b> is a student-run organization at Stuyvesant that helps students from all grade levels with their academic writing. Our editors provide detailed feedback to students who submit their essays or other written pieces, either in-person (in room 615F) or virtually via suggestions on a Google Doc. <a href="/about">More about the Writing Center</a>
+	            </p>
+	            <br>
+	            <a href="/editor_login"><button class="button is-info">Editor Login</button></a>
+	            <a href="/mentee_login"><button class="button is-info">Mentee Login</button></a>
+	            <a href="/admin" style="float: right;"><button class="button">Admin Login</button></a>
+	        </div>
+
+	        <br>
+	        <div class="main-box">
+	        		<h3 class="title is-3">
+	        			Tutorials
+	        		</h3>
+	        		<table>
+	        			<tr>
+	        				<td>
+	        					<p>
+	        						<center><i>Mentee Tutorial</i></center>
+	        					</p>
+	        					<iframe width="280" height="157" src="https://www.youtube.com/embed/K8xT3u3Lj24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	        				</td>
+	        				<td style="width: 100px; height: 200px;"></td>
+	        				<td>
+	        					<p>
+	        						<center><i>Editor Tutorial</i></center>
+	        					</p>
+	        					<iframe width="280" height="157" src="https://www.youtube.com/embed/4iq2oe5fs0g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	        				</td>
+	        			</tr>
+	        		</table>
+	        </div>
+	        <br>
+	        {% if loggedin %}
+		        <center>
+		        		<div class="main-box" style="width: 50%">
+	        				<h1 class="title is-4">You are logged in</h1>
+	        				<a href="/dashboard">
+	        					<button class="button is-info">Go to Dashboard</button>
+	        				</a>
+		        		</div>
+		        	</center>
+	        {% endif %}
+         </td>
+         <td style="width: 1%"></td>
+         <td>
+            <img src="https://i.ibb.co/wwW7Hqr/IMG-1958.jpg" style="border-radius: 20px;" /> <!--{{ url_for('static', filename='img/writing_center.png') }}">-->
+         </td>
+      </tr>
+   </table>
+</section>
+
+{% endblock %}

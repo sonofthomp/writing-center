@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% include "editor/navbar.html" %}
+{% block content %}
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <a onclick="closePopup()"><span class="close">&times;</span></a>
+        <br>
+        <center>
+            <h1 class="title is-3">How to use this website!</h1>
+        </center>
+        <br>
+        <center>
+            <h1 class="title is-3">TK</h1>
+        </center>
+    </div>
+</div>
+<center>
+    <br><br><br>
+    <h3 class="title is-2" id="welcome"><i><b>Welcome back, {{ fname }} {{ lname }}!</b></i></h3>
+    <h3 class="title is-6">There are currently <u>{{ num_unfulfilled }}</u> articles in the queue that haven't been selected by anyone</h3>
+
+    <hr>
+
+		<table class="table is-striped is-bordered" style="width: 90vw;">
+			<tr>
+				<td colspan="10" style="background-color: lightblue;"><center><h1 class="title is-4"><b>Currently selected</b></h1></center></td>
+			</tr>
+			<tr>
+				<th><i><center>Request ID</center></i></th>
+				<th><i><center>Requester</center></i></th>
+				<th><i><center>Teacher</center></i></th>
+				<th><i><center>Course</center></i></th>
+				<th><i><center>Details</center></i></th>
+				<th><i><center>Assignment Sheet</center></i></th>
+				<th><i><center>Essay Draft</center></i></th>
+				<th><i><center>Due</center></i></th>
+				<th><i><center>Actions</center></i></th>
+			</tr>
+			
+			{% for request in pending %}
+				{# {% if request[-4] == 0 %} #}
+				<tr>
+					<td><i>#{{ request[0] }}</i></td>
+					<td>{{ request[1] }} {{ request[2] }} ({{ request[5] }})<br><a href="mailto:{{ request[4] }}@stuy.edu">{{ request[4] }}@stuy.edu</a></td>
+					<td>{{ request[6] }}</td>
+					<td>{{ request[7] }} (grade {{ request[3] }}, period {{ request[8] }})</td>
+					<td>
+					{% if request[21] %}
+					<b></b><br><br>
+					{% endif %}
+					{{ request[9] }}</td>
+					<td><a href="{{ request[10] }}">Link</a></td>
+					<td><a href="{{ request[11] }}">Link</a></td>
+					<td>{{ request[17] }}</td>
+					<td>
+						{% if request[13] == 0 %}
+						<a href="/select_entry?id={{ request[0] }}">
+							<button class="button is-info">Select</button>
+						</a>
+						{% endif %}
+						{% if request[13] == 1 %}
+						{% if request[19] == "" %}
+						<center>
+							<a href="/unaccept_piece?id={{ request[0] }}">
+								<button class="button is-warning" style="height: 5%;">Un-accept</button>
+							</a>
+							<br><br>
+							<a href="/complete_entry?id={{ request[0] }}">
+								<center><button class="button is-success" style="height: 5%;">Complete</button></center>
+							</a>
+						</center>
+						{% else %}
+						<center>
+							<button class="button is-info" style="height: 5%;">Pending mentee approval...</button>
+						</center>
+						{% endif %}
+						{% endif %}
+					</td>
+				</tr>
+				{# {% endif %} #}
+			{% endfor %}
+			{% if no_current %}
+				<td colspan="10">
+					<center>
+						<br>
+						<p><b>No current selected requests!</b></p>
+						<br>
+					</center>
+				</td>
+			{% endif %}
+		</table>
+
+		<br>
+
+		<table class="table is-striped is-bordered" style="width: 90vw;">
+			<tr>
+				<td colspan="10" style="background-color: lightsalmon;"><center><h1 class="title is-4"><b>Not selected</b></h1></center></td>
+			</tr>
+			<tr>
+				<th><i><center>Request ID</center></i></th>
+				<th><i><center>Requester</center></i></th>
+				<th><i><center>Teacher</center></i></th>
+				<th><i><center>Course</center></i></th>
+				<th><i><center>Details</center></i></th>
+				<th><i><center>Assignment Sheet</center></i></th>
+				<th><i><center>Essay Draft</center></i></th>
+				<th><i><center>Due</center></i></th>
+				<th><i><center>Actions</center></i></th>
+			</tr>
+			{% for request in unselected %}
+				<tr>
+					<td><i>#{{ request[0] }}</i></td>
+					<td>{{ request[1] }} {{ request[2] }} ({{ request[5] }})<br><a href="mailto:{{ request[4] }}@stuy.edu">{{ request[4] }}@stuy.edu</a></td>
+					<td>{{ request[6] }}</td>
+					<td>{{ request[7] }} (grade {{ request[3] }}, period {{ request[8] }})</td>
+					<td>
+					{% if request[21] %}
+					<b></b>
+					{% endif %}
+					{{ request[9] }}</td>
+					<td><a href="{{ request[10] }}">Link</a></td>
+					<td><a href="{{ request[11] }}">Link</a></td>
+					<td>{{ request[17] }}</td>
+					<td>
+						{% if request[13] == 0 %}
+						<a href="/select_entry?id={{ request[0] }}">
+							<button class="button is-info">Select</button>
+						</a>
+						{% endif %}
+						{% if request[13] == 1 %}
+						<a href="/unaccept_piece?id={{ request[0] }}">
+							<button class="button is-warning" style="height: 5%;">Select</button>
+						</a>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+			{% if no_current %}
+				<td colspan="10">
+					<center>
+						<br>
+						<p><b>No current unselected requests!</b></p>
+						<br>
+					</center>
+				</td>
+			{% endif %}
+		</table>
+
+		{{ all_requests }}
+
+    <br>
+</center>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+{% endblock %}

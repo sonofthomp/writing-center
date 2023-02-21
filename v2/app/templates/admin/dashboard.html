@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% include "editor/navbar.html" %}
+{% block content %}
+<center>
+	<br><br>
+	<div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+		<h3 class="title is-3">Editors</h3>
+		<div class="content">
+			<table class="table">
+				<thead style="background-color: rgb(240, 240, 240);">
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Hours</th>
+					</tr>
+				</thead>
+				<tbody style="background-color: rgb(240, 240, 240);">
+					{% for editor in editors %}
+					<tr>
+						<td>{{ editor.fname }}</td>
+						<td>{{ editor.lname }}</td>
+						<td>{{ editor.email }}@stuy.edu</td>
+						<td>{{ editor.hours }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br>
+	<div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+		<h3 class="title is-4">Whitelist:</h3>
+		<div class="content">
+			<b>{{ whitelist }}</b>
+		</div>
+	</div>
+	<br>
+	<div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+		<div class="content">
+			<h4 class="title is-4">Add editors:</h4>
+			<p>Write a comma-separated list of the emails of each editor you want to add. Make sure to include include the part of their email before the @ symbol.</p>
+			<p><i>Example: gthompson30,seiden30,qmariam30,eyoo30</i></p>
+			<form action="/add_editors" method="POST">
+				<div class="field is-horizontal">
+				  <div class="field-body">
+				    <div class="field">
+				      <p class="control">
+				        <input class="input" type="text" name="add_whitelist" placeholder="Emails"></input>
+				      </p>
+				    </div>
+				  </div>
+				</div>
+				<button class="button is-info">Add</button>
+			</form>
+		</div>
+	</div>
+	<br>
+	<div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+		<div class="content">
+			<h4 class="title is-4">Add event:</h4>
+			<p><i>Enter HTML content of entry in the field:</i></p>
+			<form action="/add_entry" method="POST">
+				<div class="field is-horizontal">
+				  <div class="field-body">
+				    <div class="field">
+				      <p class="control">
+				        <input class="input" type="text" name="title" placeholder="Enter title here..."></textarea>
+				      </p>
+				    </div>
+				  </div>
+				</div>
+                <div class="field is-horizontal">
+                    <div class="control" style="width: 40vw;">
+                        <input class="input" type="date" name="date"></input>
+                    </div>
+                    <div style="width: 1vw;"></div>
+                    <div class="control" style="width: 10vw;">
+                        <input class="input" type="time" name="time"></input>
+                    </div>
+                </div>
+				<div class="field is-horizontal">
+				  <div class="field-body">
+				    <div class="field">
+				      <p class="control">
+				        <textarea rows="10" class="textarea" type="text" name="add_entry" placeholder="Enter html here..."></textarea>
+				      </p>
+				    </div>
+				  </div>
+				</div>
+				<button class="button is-info">Add</button>
+			</form>
+		</div>
+	</div>
+		<br>
+		<br>
+</center>
+{% endblock %}

@@ -1,0 +1,132 @@
+{# This is the "about us" page #}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.usertype == 'mentee' %}
+	{% include "mentee/navbar.html" %}
+{% endif %}
+
+{% if current_user.usertype == 'editor' %}
+	{% include "editor/navbar.html" %}
+{% endif %}
+
+<br><br>
+<h1 class="title is-3"><center>About the Writing Center</center></h1>
+<hr>
+<div style="width: 60vw; margin-left: 20vw; background-color: rgb(240, 240, 240);" class="main-box">
+	<p>
+		<b>The Writing Center</b> is a student-run organization at Stuyvesant that helps students from all grade levels with their academic writing. Our editors provide detailed feedback to students who submit their essays or other written pieces, either in-person (in room 615F) or virtually via suggestions on a Google Doc, working diligently to give insightful suggestions specific to each student’s needs. (More information about the Writing Center can be found on <a href="https://stuyactivities.org/stuywc">our StuyActivities page</a>).
+	</p>
+	<br><br>
+	<h1 class="title is-4" id="faq"><center>FAQs</center></h1>
+	<p>
+		<i><u>When should I submit my essay?</u></i>
+		<br>
+		Please always submit your piece at least 24 hours before it is due! Even if your piece is not finished, submitting early will allow Writing Center editors to edit your piece thoroughly without rushing.
+	</p>
+	<br>
+	<p>
+		<i><u>How can I send in a request to have my essay edited?</u></i>
+		<br>
+		Log in as a mentee using your Stuyvesant email account and fill out the form with information about your paper. You’ll receive an email when your request has been accepted by one of our editors. You’ll be able to keep in touch with your assigned editor throughout the editing process. Once they are done looking through your paper, you’ll receive another email with a confirmation and a link to provide feedback to your assigned editor. If you have any questions or concerns about how to use our website, be sure to click the Help button (question mark) at the upper right or contact our IT director using the Report Bug button.
+	</p>
+	<br>
+	<p>
+		<i><u>In what areas can Writing Center editors help me with my writing?</u></i>
+		<br>
+		Grammar, evidence, analysis, dialogue, structure—you name it! If you specify what kind of feedback you’re looking for in your request, our editors will focus on that aspect of your writing in their comments, whatever it may be.
+	</p>
+	<br>
+	<p>
+		<i><u>What kind of writing does the Writing Center edit?</u></i>
+		<br> 		We accept all assignments from Stuyvesant English classes (including poetry, narratives, and thesis essays). We are also available to edit papers for non-English classes, college essays, and pieces for writing competitions.
+	</p>
+	<br>
+	<p>
+		<i><u>How can I become an editor at the Writing Center?</u></i>
+		<br>
+		We release applications for new and returning editors at the beginning of each school year, as well as another round of applications for new editors at the beginning of the spring semester. Make sure to check Stuyvesant’s Facebook groups and school announcements for more information!
+	</p>
+	<br><br>
+	<h1 class="title is-4" id="leadership"><center>Leadership</center></h1>
+	<center>
+	<table>
+		<tr>
+			<td>
+				<img src="https://media-exp1.licdn.com/dms/image/C5603AQE-RDRmDvuLcA/profile-displayphoto-shrink_800_800/0/1624314382241?e=1670457600&v=beta&t=OgGK7SqC59xcZ1VTO-dIvu0rQ8R_P1FHWdlS6M8v1BA" style="width: 12vw; border-radius; 20px;"></img>
+				<h3 class="title is-5">Eugene Yoo</h3>
+				<h3 class="title is-6">Executive Director</h3>
+			</td>
+			<td style="width: 5vw;"></td>
+			<td>
+				<img src="https://pngimg.com/uploads/question_mark/question_mark_PNG99.png" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Quainat Mariam</h3>
+				<h3 class="title is-6">Something something</h3>
+			</td>
+			<td style="width: 5vw;"></td>
+			<td>
+				<img src="https://pngimg.com/uploads/question_mark/question_mark_PNG99.png" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Abigail Chung</h3>
+				<h3 class="title is-6">Something something</h3>
+			</td>
+		</tr>
+		<tr style="height: 10vh;">
+		</tr>
+		<tr>
+			<td>
+				<img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.6435-9/67633925_129330895001938_3307890039358226432_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=kD23HfetaLEAX-FIrrI&_nc_ht=scontent-yyz1-1.xx&oh=00_AT-4VvSa4aRIWDt6Wdo985LM0-ICQH5d4g8t497-_79afw&oe=632D3CAE" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Sophia Eiden</h3>
+				<h3 class="title is-6">Something something</h3>
+			</td>
+			<td style="width: 5vw;"></td>
+			<td>
+				<img src="https://media-exp1.licdn.com/dms/image/C4E03AQH3iUDq--8d8A/profile-displayphoto-shrink_800_800/0/1647303193665?e=1668038400&v=beta&t=Wv71Npmmaia5JMQvhk1yLiuf_7mcyDPTWwgcRAyAYrM" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Gabriel Thompson</h3>
+				<h3 class="title is-6">I.T. Director</h3>
+				<br>
+			</td>
+			<td style="width: 5vw;"></td>
+			<td>
+				<img src="https://i.ibb.co/Zzzsq21/Screen-Shot-2022-09-03-at-9-14-21-PM.png" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Kikyo Makino</h3>
+				<h3 class="title is-6">Something something</h3>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="{{ url_for('static', filename='img/stuzin.jpeg') }}" style="width: 12vw; border-radius: 20px;"></img>
+				<h3 class="title is-5">Mx. Lauren Stuzin</h3>
+				<h3 class="title is-6">Faculty Advisor?</h3>
+			</td>
+		</tr>
+	</table>
+	</center>
+</div>
+
+
+<br><br>
+<div style="width: 60vw; margin-left: 20vw; background-color: rgb(240, 240, 240);" class="main-box">
+
+	<h1 class="title is-3">Editor Leaderboard</h1>
+		<center>
+        <table>
+            <th>
+                <td style="line-height: 3"><b>Name</b></td>
+                <td style="line-height: 3"><b>Hours</b></td>
+            </th>
+            {% for editor in editors %}
+            <tr>
+                <td style="width: 5vw;"><b>#{{ loop.index }}</b></td>
+                <td style="width: 20vw;">{{ editor.fname }} {{ editor.lname }}</td>
+                <td style="width: 20vw;">{{ editor.hours }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    	</center>
+</div>
+
+<br><br>
+
+{% endblock %}

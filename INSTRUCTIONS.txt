@@ -1,0 +1,7 @@
+HOW TO START SERVER:
+  1. cd ~/writing-center/v2
+  2. sudo nohup flask run -h 0.0.0.0 -p 80 > log.txt 2>&1 &
+
+HOW TO TURN OFF:
+  1. netstat -vanp tcp | grep 80
+  2. kill -9 [PID]

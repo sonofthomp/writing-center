@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="column is-4 is-offset-4">
+	<br><br><br><br><br>
+    <h3 class="title">Admin Login</h3>
+    <div class="box">
+        <form method="POST" action="/admin">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="notification is-{{ category }}">
+                            <center>{{ message }}</center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="field">
+                <div class="control">
+                    <input class="input is-medium" type="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+            <br>
+        </form>
+    </div>
+    <a href="/">
+	    <button class="button is-light" style="background-color: rgb(226, 225, 224);">← Back</button>
+	</a>
+</div>
+{% endblock %}

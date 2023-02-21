@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% include "editor/navbar.html" %}
+{% block content %}
+<br><br>
+
+<center>
+    <h3 class="title is-3">Credits & Stats</h3>
+    <hr>
+</center>
+<center>
+    <div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+        <center>
+            <h3 class="title is-3"><i style="color: darkslateblue;">Your Stats</i></h3>
+        </center>
+        <br>
+        <table>
+            <tr>
+                <td><h3 class="title is-4" style="line-height: 1.5; text-align: right; width: 20vw;"> Total Hours:</h3></td>
+                <td style="width: 2vw;"></td>
+                <td><h3 class="title is-4" style="line-height: 1.5; width: 20vw;"><i>{{ hours }} hrs</i></h3></td>
+            </tr>
+            <tr>
+                <td><h3 class="title is-4" style="line-height: 1.5; text-align: right; width: 20vw;"> Hours This Month:</h3></td>
+                <td style="width: 2vw;"></td>
+                <td><h3 class="title is-4" style="line-height: 1.5; width: 20vw;"><i>{{ latest }} hrs</i></h3></td>
+            </tr>
+            <tr>
+                <td><h3 class="title is-4" style="line-height: 1.5; text-align: right;">Total Credits:</h3></td>
+                <td style="width: 2vw;"></td>
+                <td><h3 class="title is-4" style="line-height: 1.5"><i>{{ credits }}</i></h3></td>
+            </tr>
+            <tr>
+                <td><h3 class="title is-4" style="line-height: 1.5; text-align: right;">Ranking This Month:</h3></td>
+                <td style="width: 2vw;"></td>
+                <td><h3 class="title is-4" style="line-height: 1.5"><i>#1 of 1</i></h3></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="main-box" style="width: 50%; background-color: rgb(240, 240, 240);">
+        <center>
+            <h3 class="title is-3"><i style="color: darkslateblue;">Overall Leaderboard</i></h2>
+        </center>
+        <br>
+        <table>
+            <th>
+                <td style="line-height: 3"><b>Name</b></td>
+                <td style="line-height: 3"><b>Hours</b></td>
+            </th>
+            {% for editor in editors %}
+            <tr>
+                <td style="width: 5vw;"><b>#{{ loop.index }}</b></td>
+                <td style="width: 20vw;">{{ editor.fname }} {{ editor.lname }}</td>
+                <td style="width: 20vw;">{{ editor.hours }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+</center>
+{% endblock %}

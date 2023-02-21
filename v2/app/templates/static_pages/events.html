@@ -1,0 +1,32 @@
+{# This is the "events" page #}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.usertype == 'mentee' %}
+	{% include "mentee/navbar.html" %}
+{% endif %}
+
+{% if current_user.usertype == 'editor' %}
+	{% include "editor/navbar.html" %}
+{% endif %}
+
+<br><br>
+
+<center>
+	<h3 class="title is-3">Events</h3>
+	<hr>
+</center>
+
+{% for event in events %}
+	<p style="padding-left: 20vw;"><u><i>{{ event[2] }}</i></u></p>
+	<div style="width: 60vw; margin-left: 20vw; background-color: rgb(240, 240, 240); " class="main-box">
+
+		<h1 class="title is-4">{{ event[0] }}</h1>
+		{{ event[1]|safe }}
+	</div>
+	<br>
+{% endfor %}
+
+{% endblock %}

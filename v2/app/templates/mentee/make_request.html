@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% include "mentee/navbar.html" %}
+{% block content %}
+
+<div class="column is-6 is-offset-3">
+	<br><br>
+    <h3 class="title">Submit Piece for Editing</h3>
+    <div class="box" style="background-color: rgb(240, 240, 240);">
+        <form method="POST" action="/create_piece">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Teacher:</label>
+                </div>
+
+                <input type="hidden" name="fname" value="{{ current_user.fname }}"></input>
+                <input type="hidden" name="lname" value="{{ current_user.lname }}"></input>
+                <input type="hidden" name="grade" value="{{ current_user.grade }}"></input>
+                <input type="hidden" name="email" value="{{ current_user.email }}"></input>
+                <input type="hidden" name="pronouns" value="{{ current_user.pronouns }}"></input>
+                
+                <div class="field-body">
+                    <div class="field">
+                        <div class="select" style="width: 200%;">
+                        	<select name="teacher" style="width: 200%;">
+                                <option disabled selected value>Enter teacher here...</option>
+        	                    {% for teacher in teachers %}
+        	                    <option value="{{ teacher }}">{{ teacher }}</option>
+        	                    {% endfor %}
+        	                </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Course:</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="select" style="width: 200%;">
+                            <select name="course" style="width: 200%;">
+                                <option disabled selected value>Enter course here...</option>
+                                {% for course in courses %}
+                                <option value="{{ course }}">{{ course }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Period:</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="select" style="width: 200%;">
+                            <select name="period" style="width: 200%;">
+                                <option disabled selected value>Enter period here...</option>
+                                {% for period in range(1, 11) %}
+                                <option value="{{ period }}">{{ period }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="field">
+            	<p><b>What, in particular, do you need help with?</b></p>
+            	<div class="control">
+            		<textarea class="textarea" name="help" placeholder="Write here..."></textarea>
+            	</div>
+            </div>
+
+            <br>
+
+            <div class="field">
+            	<p><b>Please provide a publicly accessible link to the assignment sheet in the box below</b></p>
+            	<div class="control">
+            		<input class="input is-link" type="text" name="assignment_sheet" placeholder="Link input">
+            	</div>
+            </div>
+
+            <br>
+
+            <div class="field">
+            	<p><b>Please provide a publicly editable Google Doc link to your essay</b></p>
+            	<div class="control">
+            		<input class="input is-link" type="text" name="google_doc" placeholder="Link input">
+            	</div>
+            </div>
+
+            <div class="field">
+                <p><b>When is your assignment due?</b></p>
+                <div class="field is-horizontal">
+                    <div class="control" style="width: 24vw;">
+                        <input class="input" type="date" name="due_date"></input>
+                    </div>
+                    <div class="control" style="width: 24vw;">
+                        <input class="input" type="time" name="due_time"></input>
+                    </div>
+                </div>
+            </div>
+
+            <label class="checkbox">
+                <input type="checkbox" name="in_person">
+                I would like to meet with the editor in-person
+            </label>
+
+            <br><br><br>
+
+            <button class="button is-block is-info is-large is-fullwidth">Submit Piece</button>
+        </form>
+    </div>
+    <a href="/">
+	    <button class="button is-light" style="background-color: rgb(226, 225, 224);">← Back</button>
+	</a>
+</div>
+
+{% endblock %}

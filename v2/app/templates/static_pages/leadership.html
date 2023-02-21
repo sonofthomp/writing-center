@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.usertype == 'mentee' %}
+	{% include "mentee/navbar.html" %}
+{% endif %}
+
+{% if current_user.usertype == 'editor' %}
+	{% include "editor/navbar.html" %}
+{% endif %}
+
+<br><br>
+
+<center>
+	<h3 class="title is-3">Leadership</h3>
+	<hr>
+	<div style="width: 50vw; background-color: rgb(224, 225, 230); border-radius: 10px;">
+		<br><br>
+		<table>
+			<tr>
+				<td>
+					<img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.6435-1/131301833_507945780473182_4568602068312304909_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=7206a8&_nc_ohc=PXFtsYyggPsAX9E0e6y&_nc_oc=AQk0uEQgJk-dN5miApYA0YazgCN45_ZPxh-I75ACi9wOfhLzR6_86bYGe0Eyam6fxjjrqg-7emGPXYB8W0DmbnRx&_nc_ht=scontent-yyz1-1.xx&oh=00_AT-_EPHVHHtjeeOcCzPodiGdEM-gdjl0oGT1bH3oCTDnBQ&oe=632DDAC7" style="width: 12vw; border-radius: 20px;"></img>
+					<h3 class="title is-5">Eugene Yoo</h3>
+					<h3 class="title is-6">Executive Director</h3>
+				</td>
+				<td style="width: 5vw;"></td>
+				<td>
+					<img src="https://pngimg.com/uploads/question_mark/question_mark_PNG99.png" style="width: 12vw; border-radius: 20px;"></img>
+					<h3 class="title is-5">Quainat Mariam</h3>
+					<h3 class="title is-6">Something something</h3>
+				</td>
+			</tr>
+			<tr style="height: 10vh;">
+			</tr>
+			<tr>
+				<td>
+					<img src="https://pngimg.com/uploads/question_mark/question_mark_PNG99.png" style="width: 12vw; border-radius: 20px;"></img>
+					<h3 class="title is-5">Abigail Chung</h3>
+					<h3 class="title is-6">Something something</h3>
+				</td>
+				<td style="width: 5vw;"></td>
+				<td>
+					<img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.6435-9/67633925_129330895001938_3307890039358226432_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=kD23HfetaLEAX-FIrrI&_nc_ht=scontent-yyz1-1.xx&oh=00_AT-4VvSa4aRIWDt6Wdo985LM0-ICQH5d4g8t497-_79afw&oe=632D3CAE" style="width: 12vw; border-radius: 20px;"></img>
+					<h3 class="title is-5">Sophia Eiden</h3>
+					<h3 class="title is-6">Something something</h3>
+				</td>
+			</tr>
+			<tr style="height: 10vh;">
+			</tr>
+			<tr>
+				<td>
+					<img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-1/275967407_711999816838060_3884283605500498623_n.jpg?stp=c0.79.480.480a_dst-jpg_p480x480&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=OLigFjz6AF0AX8eeQsk&_nc_ht=scontent-yyz1-1.xx&oh=00_AT_wvYPU2XlCgDOc73snn-Y27UqLAaxfWS-zG9EpXaDZAQ&oe=630C4E6E" style="width: 12vw; border-radius: 20px;"></img>
+					<h3 class="title is-5">Gabriel Thompson</h3>
+					<h3 class="title is-6">I.T. Director</h3>
+				</td>
+			</tr>
+		</table>
+		<br>
+	<div>
+</center>
+
+<br><br>
+
+{% endblock %}
